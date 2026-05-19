@@ -91,8 +91,8 @@
     <!-- WORKSPACE -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
       
-      <!-- CONTROLS & SIDEBAR PANEL (4 Cols) -->
-      <section class="lg:col-span-4 flex flex-col gap-6">
+      <!-- CONTROLS & SIDEBAR PANEL (Spans 4 columns on lg, 3 columns on xl) -->
+      <section class="lg:col-span-4 xl:col-span-3 flex flex-col gap-6">
         
         <!-- Workflow Scenario Chooser -->
         <div class="bg-brand-white dark:bg-brand-black border border-brand-slate/20 rounded-xl p-5 shadow-sm flex flex-col gap-4">
@@ -203,8 +203,8 @@
 
       </section>
 
-      <!-- CANVAS / GRID CONTAINER (8 Cols) -->
-      <section class="lg:col-span-8 bg-brand-white dark:bg-brand-black border border-brand-slate/20 rounded-xl shadow-sm overflow-hidden flex flex-col">
+      <!-- CANVAS / GRID CONTAINER (Spans 8 columns on lg, 9 columns on xl for maximum horizontal width) -->
+      <section class="lg:col-span-8 xl:col-span-9 bg-brand-white dark:bg-brand-black border border-brand-slate/20 rounded-xl shadow-sm overflow-hidden flex flex-col">
         
         <!-- Interactive Mode Label & Canvas Controls -->
         <div class="px-6 py-4 border-b border-brand-slate/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-2 bg-brand-cream/30 dark:bg-brand-slate/10">
@@ -223,34 +223,34 @@
         </div>
 
         <!-- The Interactive Diagram Board (Multi-lane) -->
-        <div class="p-6 overflow-x-auto relative min-w-[700px] lane-grid">
+        <div class="p-6 overflow-x-auto relative min-w-[620px] lane-grid">
           
           <!-- SWIMLANES MATRIX -->
           <div class="flex flex-col gap-4 relative">
 
             <!-- LANE 1: PROCORE AM -->
             <div class="flex items-center gap-4 py-2 border-b border-dashed border-brand-slate/10">
-              <!-- Lane Header (Sticky Left) -->
-              <div class="w-32 flex-shrink-0 bg-brand-cream/60 dark:bg-brand-slate/20 rounded-lg p-3 border-l-4 border-brand-slate text-left min-h-[4.5rem] flex items-center">
+              <!-- Lane Header -->
+              <div class="w-28 flex-shrink-0 bg-brand-cream/60 dark:bg-brand-slate/20 rounded-lg p-3 border-l-4 border-brand-slate text-left min-h-[4.5rem] flex items-center">
                 <div class="font-bold text-sm text-brand-black dark:text-brand-white">Procore AM</div>
               </div>
               
               <!-- Lane Nodes -->
-              <div class="flex flex-1 items-center gap-6">
+              <div class="flex flex-1 items-center gap-4">
                 <!-- Node: Identify Opp -->
-                <div id="node_luke_start" onclick="selectNode('luke_start')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative group">
+                <div id="node_luke_start" onclick="selectNode('luke_start')" class="cursor-pointer transition-all duration-300 w-36 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative group shadow-sm">
                   <div class="absolute -top-2 left-4 px-1.5 py-0.2 bg-brand-cream dark:bg-brand-slate text-brand-brown dark:text-brand-cream text-[8px] font-bold rounded">Step 1</div>
-                  <h4 class="font-bold text-brand-black dark:text-brand-cream">Identifies Datagrid Opp</h4>
+                  <h4 class="font-bold text-brand-black dark:text-brand-cream leading-tight">Identifies Datagrid Opp</h4>
                   <p class="text-[10px] text-brand-slate mt-1">Believes there is AI/DG potential.</p>
                 </div>
 
                 <!-- Connector Line -->
-                <div class="w-8 h-0.5 bg-brand-slate/20" id="conn_1"></div>
+                <div class="w-5 h-0.5 bg-brand-slate/20" id="conn_1"></div>
 
                 <!-- Node: Engages AI SolSpec -->
-                <div id="node_luke_engage" onclick="selectNode('luke_engage')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative group">
+                <div id="node_luke_engage" onclick="selectNode('luke_engage')" class="cursor-pointer transition-all duration-300 w-36 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative group shadow-sm">
                   <div class="absolute -top-2 left-4 px-1.5 py-0.2 bg-brand-cream dark:bg-brand-slate text-brand-brown dark:text-brand-cream text-[8px] font-bold rounded">Step 2</div>
-                  <h4 class="font-bold text-brand-black dark:text-brand-cream">Engages AI SolSpec</h4>
+                  <h4 class="font-bold text-brand-black dark:text-brand-cream leading-tight">Engages AI SolSpec</h4>
                   <p class="text-[10px] text-brand-slate mt-1">Direct instruction to involve specialist.</p>
                 </div>
               </div>
@@ -259,29 +259,29 @@
             <!-- LANE 2: PROCORE AI SOLSPEC -->
             <div id="lane_gustav" class="flex items-center gap-4 py-2 border-b border-dashed border-brand-slate/10 transition-opacity duration-300">
               <!-- Lane Header -->
-              <div class="w-32 flex-shrink-0 bg-brand-cream/30 dark:bg-brand-slate/20 rounded-lg p-3 border-l-4 border-brand-gold text-left min-h-[4.5rem] flex items-center">
+              <div class="w-28 flex-shrink-0 bg-brand-cream/30 dark:bg-brand-slate/20 rounded-lg p-3 border-l-4 border-brand-gold text-left min-h-[4.5rem] flex items-center">
                 <div class="font-bold text-sm text-brand-black dark:text-brand-white">Procore AI SolSpec</div>
               </div>
 
               <!-- Lane Nodes -->
-              <div class="flex flex-1 items-center gap-6">
-                <!-- Filler Space to align visually under Luke's engage node -->
-                <div class="w-44 flex-shrink-0"></div>
-                <div class="w-8 h-0.5 bg-transparent"></div>
+              <div class="flex flex-1 items-center gap-4">
+                <!-- Filler Spacer -->
+                <div class="w-36 flex-shrink-0"></div>
+                <div class="w-5 h-0.5 bg-transparent"></div>
 
                 <!-- Node: AI SolSpec Qualifies -->
-                <div id="node_gustav_qualify" onclick="selectNode('gustav_qualify')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative group">
+                <div id="node_gustav_qualify" onclick="selectNode('gustav_qualify')" class="cursor-pointer transition-all duration-300 w-36 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative group shadow-sm">
                   <div class="absolute -top-2 left-4 px-1.5 py-0.2 bg-brand-cream dark:bg-brand-slate text-brand-brown dark:text-brand-cream text-[8px] font-bold rounded">Step 3</div>
-                  <h4 class="font-bold text-brand-black dark:text-brand-cream">Qualifies Opportunity</h4>
+                  <h4 class="font-bold text-brand-black dark:text-brand-cream leading-tight">Qualifies Opportunity</h4>
                   <p class="text-[10px] text-brand-slate mt-1">Convenes discovery or internal review.</p>
                 </div>
 
-                <div class="w-8 h-0.5 bg-brand-slate/20" id="conn_2"></div>
+                <div class="w-5 h-0.5 bg-brand-slate/20" id="conn_2"></div>
 
                 <!-- Node: Decision - Is Real? -->
-                <div id="node_gustav_decision" onclick="selectNode('gustav_decision')" class="cursor-pointer transition-all duration-300 w-28 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-xl border border-brand-slate/20 text-xs text-center relative flex flex-col justify-center items-center aspect-square shadow-sm">
+                <div id="node_gustav_decision" onclick="selectNode('gustav_decision')" class="cursor-pointer transition-all duration-300 w-24 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-xl border border-brand-slate/20 text-xs text-center relative flex flex-col justify-center items-center aspect-square shadow-sm">
                   <span class="text-[9px] font-bold text-brand-orange">DECISION</span>
-                  <h4 class="font-bold text-brand-black dark:text-brand-cream leading-tight">Is Opp Real?</h4>
+                  <h4 class="font-bold text-brand-black dark:text-brand-cream leading-none">Is Opp Real?</h4>
                 </div>
               </div>
             </div>
@@ -289,29 +289,29 @@
             <!-- LANE 3: DG SELLER -->
             <div class="flex items-center gap-4 py-2 border-b border-dashed border-brand-slate/10">
               <!-- Lane Header -->
-              <div class="w-32 flex-shrink-0 bg-brand-cream/40 dark:bg-brand-slate/20 rounded-lg p-3 border-l-4 border-brand-orange text-left min-h-[4.5rem] flex items-center">
+              <div class="w-28 flex-shrink-0 bg-brand-cream/40 dark:bg-brand-slate/20 rounded-lg p-3 border-l-4 border-brand-orange text-left min-h-[4.5rem] flex items-center">
                 <div class="font-bold text-sm text-brand-black dark:text-brand-white">DG Seller</div>
               </div>
 
               <!-- Lane Nodes -->
-              <div class="flex flex-1 items-center gap-6">
-                <!-- visual alignment offsets -->
-                <div class="w-44 flex-shrink-0"></div>
-                <div class="w-8 h-0.5 bg-transparent"></div>
-                <div class="w-44 flex-shrink-0"></div>
-                <div class="w-8 h-0.5 bg-transparent"></div>
+              <div class="flex flex-1 items-center gap-4">
+                <!-- Filler Spacers -->
+                <div class="w-36 flex-shrink-0"></div>
+                <div class="w-5 h-0.5 bg-transparent"></div>
+                <div class="w-36 flex-shrink-0"></div>
+                <div class="w-5 h-0.5 bg-transparent"></div>
                 
                 <!-- Decision Point for Alignment -->
-                <div id="node_wyatt_decision" onclick="selectNode('wyatt_decision')" class="cursor-pointer transition-all duration-300 w-28 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-xl border border-brand-slate/20 text-xs text-center relative flex flex-col justify-center items-center aspect-square shadow-sm">
+                <div id="node_wyatt_decision" onclick="selectNode('wyatt_decision')" class="cursor-pointer transition-all duration-300 w-24 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-xl border border-brand-slate/20 text-xs text-center relative flex flex-col justify-center items-center aspect-square shadow-sm">
                   <span class="text-[9px] font-bold text-brand-brown">ALIGNMENT</span>
-                  <h4 class="font-bold text-brand-black dark:text-brand-cream leading-tight">DG Seller's Account?</h4>
+                  <h4 class="font-bold text-brand-black dark:text-brand-cream leading-none">DG Seller's Account?</h4>
                 </div>
 
-                <div class="w-8 h-0.5 bg-brand-slate/20" id="conn_3"></div>
+                <div class="w-5 h-0.5 bg-brand-slate/20" id="conn_3"></div>
 
                 <!-- Node: Wyatt loop in -->
-                <div id="node_wyatt_engaged" onclick="selectNode('wyatt_engaged')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative">
-                  <h4 class="font-bold text-brand-black dark:text-brand-cream">DG Seller Brought In</h4>
+                <div id="node_wyatt_engaged" onclick="selectNode('wyatt_engaged')" class="cursor-pointer transition-all duration-300 w-36 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative">
+                  <h4 class="font-bold text-brand-black dark:text-brand-cream leading-tight">DG Seller Brought In</h4>
                   <p class="text-[10px] text-brand-slate mt-1">DG alignment rules trigger next action.</p>
                 </div>
               </div>
@@ -320,36 +320,36 @@
             <!-- LANE 4: DG ALIGNED PROCORE AI SOLSPEC -->
             <div class="flex items-center gap-4 py-2">
               <!-- Lane Header -->
-              <div class="w-32 flex-shrink-0 bg-brand-cream/50 dark:bg-brand-slate/20 rounded-lg p-3 border-l-4 border-brand-brown text-left min-h-[4.5rem] flex items-center">
-                <div class="font-bold text-xs text-brand-black dark:text-brand-white uppercase leading-tight">DG aligned Procore AI SolSpec</div>
+              <div class="w-28 flex-shrink-0 bg-brand-cream/50 dark:bg-brand-slate/20 rounded-lg p-3 border-l-4 border-brand-brown text-left min-h-[4.5rem] flex items-center">
+                <div class="font-bold text-xs text-brand-black dark:text-brand-white leading-tight">DG aligned Procore AI SolSpec</div>
               </div>
 
               <!-- Lane Nodes -->
-              <div class="flex flex-1 items-center gap-6">
+              <div class="flex flex-1 items-center gap-4">
                 <!-- Shortcut Step Start Node (Hidden/grey unless special mode activated) -->
-                <div id="node_shortcut_start" onclick="selectNode('shortcut_start')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-cream/30 dark:bg-brand-slate/40 p-3 rounded-lg border border-dashed border-brand-slate/30 text-xs text-center relative">
+                <div id="node_shortcut_start" onclick="selectNode('shortcut_start')" class="cursor-pointer transition-all duration-300 w-36 bg-brand-cream/30 dark:bg-brand-slate/40 p-3 rounded-lg border border-dashed border-brand-slate/30 text-xs text-center relative">
                   <div class="absolute -top-2 left-4 px-1.5 py-0.2 bg-brand-orange text-brand-white text-[8px] font-bold rounded">Shortcut</div>
-                  <h4 class="font-bold text-brand-slate dark:text-brand-cream">DG Seller Already Aware</h4>
+                  <h4 class="font-bold text-brand-slate dark:text-brand-cream leading-tight">DG Seller Already Aware</h4>
                   <p class="text-[10px] text-brand-slate/80 mt-1">Bypass typical discovery flow</p>
                 </div>
 
-                <div class="w-8 h-0.5 bg-transparent" id="conn_shortcut"></div>
+                <div class="w-5 h-0.5 bg-transparent" id="conn_shortcut"></div>
 
-                <div class="w-44 flex-shrink-0"></div>
-                <div class="w-8 h-0.5 bg-transparent"></div>
+                <div class="w-36 flex-shrink-0"></div>
+                <div class="w-5 h-0.5 bg-transparent"></div>
 
                 <!-- Node: DG SolSpec takes over -->
-                <div id="node_luc_takeover" onclick="selectNode('luc_takeover')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative">
-                  <h4 class="font-bold text-brand-black dark:text-brand-cream">DG aligned Procore AI SolSpec Takes Over</h4>
+                <div id="node_luc_takeover" onclick="selectNode('luc_takeover')" class="cursor-pointer transition-all duration-300 w-36 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative">
+                  <h4 class="font-bold text-brand-black dark:text-brand-cream leading-tight">DG aligned Procore AI SolSpec Takes Over</h4>
                   <p class="text-[10px] text-brand-slate mt-1">Runs active co-sell interaction.</p>
                 </div>
 
-                <div class="w-8 h-0.5 bg-brand-slate/20" id="conn_4"></div>
+                <div class="w-5 h-0.5 bg-brand-slate/20" id="conn_4"></div>
 
                 <!-- Node: DG SolSpec runs deal -->
-                <div id="node_luc_runs" onclick="selectNode('luc_runs')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative">
+                <div id="node_luc_runs" onclick="selectNode('luc_runs')" class="cursor-pointer transition-all duration-300 w-36 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative">
                   <div class="absolute -top-2 right-4 px-1.5 py-0.2 bg-brand-orange text-brand-white text-[8px] font-bold rounded">Execution</div>
-                  <h4 class="font-bold text-brand-black dark:text-brand-cream text-left">DG aligned Procore AI SolSpec Runs the Opp</h4>
+                  <h4 class="font-bold text-brand-black dark:text-brand-cream text-left leading-tight">DG aligned Procore AI SolSpec Runs the Opp</h4>
                   <p class="text-[10px] text-brand-slate mt-1">Supported by joint team coverage.</p>
                 </div>
               </div>
@@ -378,28 +378,6 @@
       </section>
 
     </div>
-
-    <!-- EXPLANATORY FAQ & RULES SECTION -->
-    <section class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-brand-slate/20">
-      <div class="p-4 rounded-lg bg-brand-cream/20 border border-brand-slate/10">
-        <h4 class="font-bold text-sm text-brand-black dark:text-brand-white">The Power of Co-Selling</h4>
-        <p class="text-xs text-brand-slate dark:text-brand-gold mt-1 leading-relaxed">
-          In Q2, co-selling means combining forces. When the Procore AI SolSpec ensures an opportunity is viable, Datagrid Specialists take the reins to deliver domain-specific AI value.
-        </p>
-      </div>
-      <div class="p-4 rounded-lg bg-brand-cream/20 border border-brand-slate/10">
-        <h4 class="font-bold text-sm text-brand-black dark:text-brand-white">Alignment Hierarchy</h4>
-        <p class="text-xs text-brand-slate dark:text-brand-gold mt-1 leading-relaxed">
-          Datagrid account alignment trumps Procore alignments. The DG aligned Procore AI SolSpec's synchronization with the DG Seller ensures consistency for accounts the DG Seller already owns or handles.
-        </p>
-      </div>
-      <div class="p-4 rounded-lg bg-brand-cream/20 border border-brand-slate/10">
-        <h4 class="font-bold text-sm text-brand-black dark:text-brand-white">Procore AI SolSpec's Flexible Role</h4>
-        <p class="text-xs text-brand-slate dark:text-brand-gold mt-1 leading-relaxed">
-          Because everyone is paid on shared team metrics, the Procore AI SolSpec has total freedom to hand over the opportunity, assist behind the scenes, or co-manage alongside the execution lead.
-        </p>
-      </div>
-    </section>
 
   </div>
 
@@ -570,11 +548,11 @@
         const node = document.getElementById(`node_${id}`);
         if (node) {
           // Clear styles
-          node.className = "cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-black p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative group shadow-sm";
+          node.className = "cursor-pointer transition-all duration-300 w-36 bg-brand-white dark:bg-brand-black p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative group shadow-sm";
           
           // Keep aspect ratio for diamond decisions
           if (id === 'gustav_decision' || id === 'wyatt_decision') {
-            node.className = "cursor-pointer transition-all duration-300 w-28 bg-brand-white dark:bg-brand-black p-3 rounded-xl border border-brand-slate/20 text-xs text-center relative flex flex-col justify-center items-center aspect-square shadow-sm";
+            node.className = "cursor-pointer transition-all duration-300 w-24 bg-brand-white dark:bg-brand-black p-3 rounded-xl border border-brand-slate/20 text-xs text-center relative flex flex-col justify-center items-center aspect-square shadow-sm";
           }
         }
       });
