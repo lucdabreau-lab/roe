@@ -1,844 +1,828 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.5">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Co-Sell Interactive Workflow</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#ff5200',
+              black: '#000000',
+              cream: '#ece0d6',
+              white: '#ffffff',
+              gold: '#cec4a1',
+              brown: '#8d6e5b',
+              slate: '#566578'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .lane-grid {
+      background-color: #ffffff;
+    }
+    .dark .lane-grid {
+      background-color: #111827; /* Fallback for tailwind flow */
+    }
+    .glow-brand-orange {
+      box-shadow: 0 0 15px 3px rgba(255, 82, 0, 0.45);
+    }
+    .glow-brand-gold {
+      box-shadow: 0 0 15px 3px rgba(206, 196, 161, 0.6);
+    }
+    .glow-brand-brown {
+      box-shadow: 0 0 15px 3px rgba(141, 110, 91, 0.5);
+    }
+    .glow-brand-slate {
+      box-shadow: 0 0 15px 3px rgba(86, 101, 120, 0.4);
+    }
   </style>
 </head>
-<body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Co-Sell Interactive Workflow&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Tailwind CSS --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Google Fonts --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&amp;display=swap" rel="stylesheet"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>tailwind.config = {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>darkMode: 'class',</p>
-<p class="p1"><span class="Apple-converted-space">      </span>theme: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>extend: {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>colors: {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>brand: {</p>
-<p class="p1"><span class="Apple-converted-space">              </span>orange: '#ff5200',</p>
-<p class="p1"><span class="Apple-converted-space">              </span>black: '#000000',</p>
-<p class="p1"><span class="Apple-converted-space">              </span>cream: '#ece0d6',</p>
-<p class="p1"><span class="Apple-converted-space">              </span>white: '#ffffff',</p>
-<p class="p1"><span class="Apple-converted-space">              </span>gold: '#cec4a1',</p>
-<p class="p1"><span class="Apple-converted-space">              </span>brown: '#8d6e5b',</p>
-<p class="p1"><span class="Apple-converted-space">              </span>slate: '#566578'</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">          </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Inter', sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.lane-grid {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background-color: #ffffff;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.dark .lane-grid {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background-color: #111827; /* Fallback for tailwind flow */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.glow-brand-orange {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 15px 3px rgba(255, 82, 0, 0.45);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.glow-brand-gold {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 15px 3px rgba(206, 196, 161, 0.6);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.glow-brand-brown {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 15px 3px rgba(141, 110, 91, 0.5);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.glow-brand-slate {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 15px 3px rgba(86, 101, 120, 0.4);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body class="bg-brand-cream/40 text-brand-black dark:bg-brand-black dark:text-brand-cream min-h-screen transition-colors duration-200"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="max-w-[1600px] mx-auto p-4 md:p-6 lg:p-8 flex flex-col gap-6"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- HEADER --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-brand-slate/20"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="flex items-center gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="px-2.5 py-1 text-xs font-semibold bg-brand-orange text-white rounded-full"&gt;Q2 Strategy&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="text-xs text-brand-slate dark:text-brand-gold"&gt;• Team-Based Co-Selling&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mt-1 bg-gradient-to-r from-brand-black to-brand-slate dark:from-white dark:to-brand-gold bg-clip-text text-transparent"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>Datagrid &amp; Procore Co-Sell Workflow</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="text-brand-slate dark:text-brand-cream/80 mt-1 max-w-2xl text-sm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>Interactive simulation showing how opportunities route between Procore AMs, Procore AI SolSpecs, and Datagrid Account Sellers.</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="flex items-center gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button id="themeToggle" class="p-2 rounded-lg bg-brand-white dark:bg-brand-slate/20 border border-brand-slate/20 dark:border-brand-slate/40 hover:bg-brand-cream transition" title="Toggle Theme"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Sun Icon in Dark Mode, Moon Icon in Light Mode --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;svg id="themeMoon" class="w-5 h-5 hidden dark:block text-brand-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;svg id="themeSun" class="w-5 h-5 block dark:hidden text-brand-slate" fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- WORKSPACE --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- CONTROLS &amp; SIDEBAR PANEL (4 Cols) --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;section class="lg:col-span-4 flex flex-col gap-6"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Workflow Scenario Chooser --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="bg-brand-white dark:bg-brand-black border border-brand-slate/20 rounded-xl p-5 shadow-sm flex flex-col gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2 class="text-md font-bold text-brand-black dark:text-brand-white flex items-center gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="w-2.5 h-2.5 bg-brand-orange rounded-full animate-pulse"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Select Workflow Mode</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="grid grid-cols-1 gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="btnTypical" class="w-full text-left p-4 rounded-lg border-2 border-brand-orange bg-brand-cream/30 text-brand-black dark:text-brand-cream transition-all flex flex-col gap-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="font-semibold text-sm text-brand-orange"&gt;Typical Co-Sell Path&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="text-xs text-brand-slate dark:text-brand-gold/80"&gt;The standard routing. Procore AM engages Procore AI SolSpec, who qualifies the opp and loops in Datagrid.&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="btnShortcut" class="w-full text-left p-4 rounded-lg border-2 border-transparent bg-brand-cream/10 dark:bg-brand-slate/20 text-brand-slate dark:text-brand-cream/70 hover:bg-brand-cream/30 dark:hover:bg-brand-slate/30 transition-all flex flex-col gap-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="font-semibold text-sm text-brand-black dark:text-brand-cream"&gt;Special Consideration Path&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="text-xs text-brand-slate/80 dark:text-brand-cream/60"&gt;DG Seller is already aware. Bypass Procore AI SolSpec's queue and directly assign execution to the DG aligned specialist.&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Live Sandbox Logic Toggles --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="sandboxToggles" class="bg-brand-white dark:bg-brand-black border border-brand-slate/20 rounded-xl p-5 shadow-sm flex flex-col gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2 class="text-md font-bold text-brand-black dark:text-brand-white flex items-center gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;svg class="w-5 h-5 text-brand-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Interactive Rules Sandbox</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="text-xs text-brand-slate dark:text-brand-gold/80"&gt;Dynamically update decision outcomes to simulate different real-world scenarios:&lt;/p&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="space-y-4 pt-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Toggle 1: Opportunity Qualification --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center justify-between" id="toggleQualifyContainer"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;label class="text-xs font-semibold block text-brand-slate dark:text-brand-cream"&gt;Is the Opportunity Real?&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="text-[10px] text-brand-slate/70 block"&gt;Needs Datagrid coverage&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;label class="relative inline-flex items-center cursor-pointer"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="checkbox" id="chkReal" class="sr-only peer" checked&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-11 h-6 bg-brand-slate/30 peer-focus:outline-none rounded-full peer dark:bg-brand-slate/50 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-brand-white after:border-brand-slate/30 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-orange"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="ml-2 text-xs font-medium text-brand-slate dark:text-brand-cream min-w-[24px]" id="txtReal"&gt;Yes&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Toggle 2: Owned by DG Seller? --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center justify-between" id="toggleOwnerContainer"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;label class="text-xs font-semibold block text-brand-slate dark:text-brand-cream"&gt;DG Account Owned by DG Seller?&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="text-[10px] text-brand-slate/70 block"&gt;Trumps Procore alignment&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;label class="relative inline-flex items-center cursor-pointer"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="checkbox" id="chkDGSeller" class="sr-only peer" checked&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-11 h-6 bg-brand-slate/30 peer-focus:outline-none rounded-full peer dark:bg-brand-slate/50 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-brand-white after:border-brand-slate/30 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-brown"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="ml-2 text-xs font-medium text-brand-slate dark:text-brand-cream min-w-[24px]" id="txtDGSeller"&gt;Yes&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Toggle 3: AI SolSpec Stay Involved? --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center justify-between"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;label class="text-xs font-semibold block text-brand-slate dark:text-brand-cream"&gt;AI SolSpec stays involved?&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="text-[10px] text-brand-slate/70 block"&gt;Provide joint specialist help&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;label class="relative inline-flex items-center cursor-pointer"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="checkbox" id="chkGustavInvolved" class="sr-only peer" checked&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-11 h-6 bg-brand-slate/30 peer-focus:outline-none rounded-full peer dark:bg-brand-slate/50 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-brand-white after:border-brand-slate/30 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-orange"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="ml-2 text-xs font-medium text-brand-slate dark:text-brand-cream min-w-[24px]" id="txtGustavInvolved"&gt;Yes&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Simulation Player Controls --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="bg-brand-white dark:bg-brand-black border border-brand-slate/20 rounded-xl p-5 shadow-sm flex flex-col gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="flex justify-between items-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="text-md font-bold text-brand-black dark:text-brand-white"&gt;Flow Simulation&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span id="stepIndicator" class="text-xs font-semibold px-2 py-0.5 bg-brand-cream text-brand-brown rounded-md"&gt;Step 1/5&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="flex gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="btnPrev" class="flex-1 py-2 text-sm font-medium border border-brand-slate/30 hover:bg-brand-cream/30 dark:hover:bg-brand-slate/20 rounded-lg transition disabled:opacity-50" disabled&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>Previous</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="btnNext" class="flex-1 py-2 text-sm font-medium bg-brand-orange hover:bg-brand-orange/90 text-brand-white rounded-lg transition"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>Next Step</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="flex gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="btnAutoplay" class="w-full py-2 text-xs font-semibold border border-brand-orange text-brand-orange hover:bg-brand-orange/10 rounded-lg transition flex items-center justify-center gap-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>Play Path Simulation</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="btnReset" class="py-2 px-3 text-xs font-semibold border border-brand-slate/20 hover:bg-brand-cream rounded-lg transition" title="Reset Simulation"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>Reset</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Detailed Explainer Card --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="bg-gradient-to-br from-brand-black to-brand-brown text-brand-white rounded-xl p-5 shadow-md flex flex-col gap-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;h3 class="font-bold text-sm tracking-wide text-brand-gold uppercase"&gt;Context &amp; Commentary&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div id="commentaryText" class="text-xs text-brand-cream/90 leading-relaxed min-h-[100px]"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>The Procore AM kicks off the co-selling workflow by spotting a possible Datagrid/AI opportunity in the pipeline. Ready to coordinate!</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- CANVAS / GRID CONTAINER (8 Cols) --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;section class="lg:col-span-8 bg-brand-white dark:bg-brand-black border border-brand-slate/20 rounded-xl shadow-sm overflow-hidden flex flex-col"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Interactive Mode Label &amp; Canvas Controls --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="px-6 py-4 border-b border-brand-slate/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-2 bg-brand-cream/30 dark:bg-brand-slate/10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 class="font-bold text-brand-black dark:text-brand-white" id="canvasTitle"&gt;Typical Co-Sell Path Simulation&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-xs text-brand-slate/80 dark:text-brand-gold/80"&gt;Click on any highlight node below to inspect its operational criteria manually.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="flex gap-2 text-xs"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-brand-cream/50 dark:bg-brand-slate/20 font-medium text-brand-slate"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="w-2 h-2 rounded-full bg-brand-slate/40"&gt;&lt;/span&gt; Unvisited</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-brand-orange/15 font-medium text-brand-orange"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="w-2 h-2 rounded-full bg-brand-orange animate-ping"&gt;&lt;/span&gt; Active Step</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- The Interactive Diagram Board (Multi-lane) --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="p-6 overflow-x-auto relative min-w-[700px] lane-grid"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- SWIMLANES MATRIX --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="flex flex-col gap-4 relative"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- LANE 1: PROCORE AM --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center gap-4 py-2 border-b border-dashed border-brand-slate/10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;!-- Lane Header (Sticky Left) --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="w-32 flex-shrink-0 bg-brand-cream/60 dark:bg-brand-slate/20 rounded-lg p-3 border-l-4 border-brand-slate text-left min-h-[4.5rem] flex items-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="font-bold text-sm text-brand-black dark:text-brand-white"&gt;Procore AM&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">              </span></p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;!-- Lane Nodes --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="flex flex-1 items-center gap-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Node: Identify Opp --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="node_luke_start" onclick="selectNode('luke_start')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="absolute -top-2 left-4 px-1.5 py-0.2 bg-brand-cream dark:bg-brand-slate text-brand-brown dark:text-brand-cream text-[8px] font-bold rounded"&gt;Step 1&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;h4 class="font-bold text-brand-black dark:text-brand-cream"&gt;Identifies Datagrid Opp&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;p class="text-[10px] text-brand-slate mt-1"&gt;Believes there is AI/DG potential.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Connector Line --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-8 h-0.5 bg-brand-slate/20" id="conn_1"&gt;&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Node: Engages AI SolSpec --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="node_luke_engage" onclick="selectNode('luke_engage')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="absolute -top-2 left-4 px-1.5 py-0.2 bg-brand-cream dark:bg-brand-slate text-brand-brown dark:text-brand-cream text-[8px] font-bold rounded"&gt;Step 2&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;h4 class="font-bold text-brand-black dark:text-brand-cream"&gt;Engages AI SolSpec&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;p class="text-[10px] text-brand-slate mt-1"&gt;Direct instruction to involve specialist.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- LANE 2: PROCORE AI SOLSPEC --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="lane_gustav" class="flex items-center gap-4 py-2 border-b border-dashed border-brand-slate/10 transition-opacity duration-300"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;!-- Lane Header --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="w-32 flex-shrink-0 bg-brand-cream/30 dark:bg-brand-slate/20 rounded-lg p-3 border-l-4 border-brand-gold text-left min-h-[4.5rem] flex items-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="font-bold text-sm text-brand-black dark:text-brand-white"&gt;Procore AI SolSpec&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;!-- Lane Nodes --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="flex flex-1 items-center gap-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Filler Space to align visually under Luke's engage node --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-44 flex-shrink-0"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-8 h-0.5 bg-transparent"&gt;&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Node: AI SolSpec Qualifies --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="node_gustav_qualify" onclick="selectNode('gustav_qualify')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="absolute -top-2 left-4 px-1.5 py-0.2 bg-brand-cream dark:bg-brand-slate text-brand-brown dark:text-brand-cream text-[8px] font-bold rounded"&gt;Step 3&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;h4 class="font-bold text-brand-black dark:text-brand-cream"&gt;Qualifies Opportunity&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;p class="text-[10px] text-brand-slate mt-1"&gt;Convenes discovery or internal review.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-8 h-0.5 bg-brand-slate/20" id="conn_2"&gt;&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Node: Decision - Is Real? --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="node_gustav_decision" onclick="selectNode('gustav_decision')" class="cursor-pointer transition-all duration-300 w-28 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-xl border border-brand-slate/20 text-xs text-center relative flex flex-col justify-center items-center aspect-square shadow-sm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;span class="text-[9px] font-bold text-brand-orange"&gt;DECISION&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;h4 class="font-bold text-brand-black dark:text-brand-cream leading-tight"&gt;Is Opp Real?&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- LANE 3: DG SELLER --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center gap-4 py-2 border-b border-dashed border-brand-slate/10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;!-- Lane Header --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="w-32 flex-shrink-0 bg-brand-cream/40 dark:bg-brand-slate/20 rounded-lg p-3 border-l-4 border-brand-orange text-left min-h-[4.5rem] flex items-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="font-bold text-sm text-brand-black dark:text-brand-white"&gt;DG Seller&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;!-- Lane Nodes --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="flex flex-1 items-center gap-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- visual alignment offsets --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-44 flex-shrink-0"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-8 h-0.5 bg-transparent"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-44 flex-shrink-0"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-8 h-0.5 bg-transparent"&gt;&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Decision Point for Alignment --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="node_wyatt_decision" onclick="selectNode('wyatt_decision')" class="cursor-pointer transition-all duration-300 w-28 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-xl border border-brand-slate/20 text-xs text-center relative flex flex-col justify-center items-center aspect-square shadow-sm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;span class="text-[9px] font-bold text-brand-brown"&gt;ALIGNMENT&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;h4 class="font-bold text-brand-black dark:text-brand-cream leading-tight"&gt;DG Seller's Account?&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-8 h-0.5 bg-brand-slate/20" id="conn_3"&gt;&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Node: Wyatt loop in --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="node_wyatt_engaged" onclick="selectNode('wyatt_engaged')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;h4 class="font-bold text-brand-black dark:text-brand-cream"&gt;DG Seller Brought In&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;p class="text-[10px] text-brand-slate mt-1"&gt;DG alignment rules trigger next action.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- LANE 4: DG ALIGNED PROCORE AI SOLSPEC --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center gap-4 py-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;!-- Lane Header --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="w-32 flex-shrink-0 bg-brand-cream/50 dark:bg-brand-slate/20 rounded-lg p-3 border-l-4 border-brand-brown text-left min-h-[4.5rem] flex items-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="font-bold text-xs text-brand-black dark:text-brand-white uppercase leading-tight"&gt;DG aligned Procore AI SolSpec&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;!-- Lane Nodes --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="flex flex-1 items-center gap-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Shortcut Step Start Node (Hidden/grey unless special mode activated) --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="node_shortcut_start" onclick="selectNode('shortcut_start')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-cream/30 dark:bg-brand-slate/40 p-3 rounded-lg border border-dashed border-brand-slate/30 text-xs text-center relative"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="absolute -top-2 left-4 px-1.5 py-0.2 bg-brand-orange text-brand-white text-[8px] font-bold rounded"&gt;Shortcut&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;h4 class="font-bold text-brand-slate dark:text-brand-cream"&gt;DG Seller Already Aware&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;p class="text-[10px] text-brand-slate/80 mt-1"&gt;Bypass typical discovery flow&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-8 h-0.5 bg-transparent" id="conn_shortcut"&gt;&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-44 flex-shrink-0"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-8 h-0.5 bg-transparent"&gt;&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Node: DG SolSpec takes over --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="node_luc_takeover" onclick="selectNode('luc_takeover')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;h4 class="font-bold text-brand-black dark:text-brand-cream"&gt;DG aligned Procore AI SolSpec Takes Over&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;p class="text-[10px] text-brand-slate mt-1"&gt;Runs active co-sell interaction.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-8 h-0.5 bg-brand-slate/20" id="conn_4"&gt;&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Node: DG SolSpec runs deal --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="node_luc_runs" onclick="selectNode('luc_runs')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="absolute -top-2 right-4 px-1.5 py-0.2 bg-brand-orange text-brand-white text-[8px] font-bold rounded"&gt;Execution&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;h4 class="font-bold text-brand-black dark:text-brand-cream text-left"&gt;DG aligned Procore AI SolSpec Runs the Opp&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;p class="text-[10px] text-brand-slate mt-1"&gt;Supported by joint team coverage.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- PATH FLOW SUMMARY OUTPUT --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="mt-auto border-t border-brand-slate/10 p-5 bg-brand-cream/10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="flex items-center justify-between mb-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h4 class="text-xs font-bold uppercase tracking-wider text-brand-slate"&gt;Generated Strategy Summary&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="copyToClipboard()" class="text-xs font-medium text-brand-orange hover:text-brand-orange/80 flex items-center gap-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m-2 4h.01M12 12h.01M12 16h.01" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>Copy Details</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div id="flowSummaryBox" class="p-4 rounded-lg bg-brand-white dark:bg-brand-black border border-brand-slate/20 text-xs leading-relaxed text-brand-slate dark:text-brand-cream min-h-[50px]"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Loading current scenario status...</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- EXPLANATORY FAQ &amp; RULES SECTION --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-brand-slate/20"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="p-4 rounded-lg bg-brand-cream/20 border border-brand-slate/10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h4 class="font-bold text-sm text-brand-black dark:text-brand-white"&gt;The Power of Co-Selling&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="text-xs text-brand-slate dark:text-brand-gold mt-1 leading-relaxed"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>In Q2, co-selling means combining forces. When the Procore AI SolSpec ensures an opportunity is viable, Datagrid Specialists take the reins to deliver domain-specific AI value.</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="p-4 rounded-lg bg-brand-cream/20 border border-brand-slate/10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h4 class="font-bold text-sm text-brand-black dark:text-brand-white"&gt;Alignment Hierarchy&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="text-xs text-brand-slate dark:text-brand-gold mt-1 leading-relaxed"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>Datagrid account alignment trumps Procore alignments. The DG aligned Procore AI SolSpec's synchronization with the DG Seller ensures consistency for accounts the DG Seller already owns or handles.</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="p-4 rounded-lg bg-brand-cream/20 border border-brand-slate/10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h4 class="font-bold text-sm text-brand-black dark:text-brand-white"&gt;Procore AI SolSpec's Flexible Role&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="text-xs text-brand-slate dark:text-brand-gold mt-1 leading-relaxed"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>Because everyone is paid on shared team metrics, the Procore AI SolSpec has total freedom to hand over the opportunity, assist behind the scenes, or co-manage alongside the execution lead.</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Notification Toast --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="toast" class="fixed bottom-4 right-4 bg-brand-black text-brand-white text-xs py-2 px-4 rounded shadow-lg translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2 border border-brand-orange"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;svg class="w-4 h-4 text-brand-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;span&gt;Text copied to clipboard!&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- JAVASCRIPT SIMULATOR CONTROLLER --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// ----------------------------------------------------</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// INITIAL SYSTEM STATES</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// ----------------------------------------------------</p>
-<p class="p1"><span class="Apple-converted-space">    </span>let currentMode = 'typical'; // 'typical' or 'shortcut'</p>
-<p class="p1"><span class="Apple-converted-space">    </span>let currentStep = 0; // index tracking simulation step</p>
-<p class="p1"><span class="Apple-converted-space">    </span>let autoPlayInterval = null;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Elements mapping</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const btnTypical = document.getElementById('btnTypical');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const btnShortcut = document.getElementById('btnShortcut');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const canvasTitle = document.getElementById('canvasTitle');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const stepIndicator = document.getElementById('stepIndicator');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const btnPrev = document.getElementById('btnPrev');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const btnNext = document.getElementById('btnNext');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const btnAutoplay = document.getElementById('btnAutoplay');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const btnReset = document.getElementById('btnReset');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const commentaryText = document.getElementById('commentaryText');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const flowSummaryBox = document.getElementById('flowSummaryBox');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const themeToggle = document.getElementById('themeToggle');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Toggles mapping</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const chkReal = document.getElementById('chkReal');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const chkDGSeller = document.getElementById('chkDGSeller');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const chkGustavInvolved = document.getElementById('chkGustavInvolved');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const txtReal = document.getElementById('txtReal');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const txtDGSeller = document.getElementById('txtDGSeller');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const txtGustavInvolved = document.getElementById('txtGustavInvolved');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>const toggleQualifyContainer = document.getElementById('toggleQualifyContainer');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const toggleOwnerContainer = document.getElementById('toggleOwnerContainer');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// ----------------------------------------------------</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// DEFINED STEPS &amp; NODE IDs</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// ----------------------------------------------------</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// TYPICAL PATH CONFIGURATION</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const typicalSteps = [</p>
-<p class="p1"><span class="Apple-converted-space">      </span>{</p>
-<p class="p1"><span class="Apple-converted-space">        </span>nodeId: 'luke_start',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>title: 'Procore AM Identifies Potential Opportunity',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>commentary: 'The Procore AM spots a potential Datagrid or AI opportunity within the account pipeline. Because of standard guidelines, they start the formal co-sell procedure.',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>summary: 'Procore AM flags potential Datagrid/AI deal in workspace.'</p>
-<p class="p1"><span class="Apple-converted-space">      </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>{</p>
-<p class="p1"><span class="Apple-converted-space">        </span>nodeId: 'luke_engage',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>title: 'Procore AM Engages Procore AI SolSpec',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>commentary: 'The Procore AM officially engages the Procore AI SolSpec (as instructed) to qualification standards. He opens the loop for co-sell coordination.',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>summary: 'Procore AM routes initial opportunity parameters to Procore AI SolSpec.'</p>
-<p class="p1"><span class="Apple-converted-space">      </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>{</p>
-<p class="p1"><span class="Apple-converted-space">        </span>nodeId: 'gustav_qualify',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>title: 'Procore AI SolSpec Evaluates &amp; Qualifies',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>commentary: 'The Procore AI SolSpec organizes initial contact or hosts an internal coordination sync with the Procore AM to discover details and size the opportunity.',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>summary: 'Procore AI SolSpec qualifies the opportunity to assess coverage scope.'</p>
-<p class="p1"><span class="Apple-converted-space">      </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>{</p>
-<p class="p1"><span class="Apple-converted-space">        </span>nodeId: 'gustav_decision',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>title: 'Decision Point: Is the Opp Valid?',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>commentary: 'The Procore AI SolSpec reviews if there is a real, high-priority deal. (If "Is the Opportunity Real" is toggled OFF, the deal closes/halts here; if YES, routing proceeds).',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>summary: 'Qualification gate: Checking validity and active team availability.'</p>
-<p class="p1"><span class="Apple-converted-space">      </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>{</p>
-<p class="p1"><span class="Apple-converted-space">        </span>nodeId: 'wyatt_decision',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>title: 'Alignment Check: DG Seller Account?',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>commentary: 'The Procore AI SolSpec engages the Datagrid team. Because Q2 mandates a co-sell approach, we query ownership. If DG Seller owns the account, special rules apply.',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>summary: 'Account ownership validation step for DG Seller.'</p>
-<p class="p1"><span class="Apple-converted-space">      </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>{</p>
-<p class="p1"><span class="Apple-converted-space">        </span>nodeId: 'wyatt_engaged',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>title: 'DG Seller is Looped In',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>commentary: 'Since the DG Seller is confirmed as the Datagrid owner of this account, they are formally pulled into the workspace.',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>summary: 'DG Seller is looped into communications as primary account holder.'</p>
-<p class="p1"><span class="Apple-converted-space">      </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>{</p>
-<p class="p1"><span class="Apple-converted-space">        </span>nodeId: 'luc_takeover',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>title: 'DG aligned Procore AI SolSpec Takes Over',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>commentary: 'Because the DG aligned Procore AI SolSpec is aligned with the DG Seller on the Datagrid business unit (and Datagrid structures trump Procore alignments), they step in to run strategy.',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>summary: 'DG aligned Procore AI SolSpec takes lead of the opportunity execution phase.'</p>
-<p class="p1"><span class="Apple-converted-space">      </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>{</p>
-<p class="p1"><span class="Apple-converted-space">        </span>nodeId: 'luc_runs',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>title: 'Deal Execution Run by DG aligned Procore AI SolSpec',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>commentary: 'The DG aligned Procore AI SolSpec manages the opportunity going forward. The Procore AI SolSpec remains available as a specialist overlay resource if teamwork parameters call for it!',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>summary: 'DG aligned Procore AI SolSpec runs the deal. Team metrics protect all stakeholders.'</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>];</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// SHORTCUT PATH CONFIGURATION (DG Seller already aware)</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const shortcutSteps = [</p>
-<p class="p1"><span class="Apple-converted-space">      </span>{</p>
-<p class="p1"><span class="Apple-converted-space">        </span>nodeId: 'shortcut_start',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>title: 'Special Consideration: DG Seller Aware',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>commentary: 'The DG Seller is already independently aware of this opportunity, meaning the Datagrid team has pre-engaged.',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>summary: 'Special consideration path: bypassing early qualification lines.'</p>
-<p class="p1"><span class="Apple-converted-space">      </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>{</p>
-<p class="p1"><span class="Apple-converted-space">        </span>nodeId: 'luc_takeover',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>title: 'DG aligned Procore AI SolSpec Takes Over',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>commentary: 'Since the DG team is already engaged and the DG aligned Procore AI SolSpec is aligned with the DG Seller, they bypass standard qualification protocols and assume immediate deal leadership.',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>summary: 'Immediate handover of deal ownership straight to the DG aligned Procore AI SolSpec.'</p>
-<p class="p1"><span class="Apple-converted-space">      </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>{</p>
-<p class="p1"><span class="Apple-converted-space">        </span>nodeId: 'luc_runs',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>title: 'DG aligned Procore AI SolSpec Progresses Deal Execution',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>commentary: 'The DG aligned Procore AI SolSpec is running the deal actively. The Procore AI SolSpec may coordinate if needed, but primary execution overhead stays on them.',</p>
-<p class="p1"><span class="Apple-converted-space">        </span>summary: 'DG aligned Procore AI SolSpec is executing deal milestones under collaborative workspace standards.'</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>];</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Get current active step list depending on the state</p>
-<p class="p1"><span class="Apple-converted-space">    </span>function getCurrentSteps() {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (currentMode === 'shortcut') {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>return shortcutSteps;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>// Filter typical steps dynamically based on sandbox settings</p>
-<p class="p1"><span class="Apple-converted-space">      </span>let steps = [...typicalSteps];</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>// If NOT real/qualified, terminate path early</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (!chkReal.checked) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>steps = steps.slice(0, 4); // Cut off after Gustav Decision</p>
-<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>// If real, check if DG Seller owns the account</p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (!chkDGSeller.checked) {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>// Skip "DG Seller is Brought In" node</p>
-<p class="p1"><span class="Apple-converted-space">          </span>steps = steps.filter(step =&gt; step.nodeId !== 'wyatt_engaged');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>return steps;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// ----------------------------------------------------</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// RENDERING &amp; INTERACTION CONTROLLER</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// ----------------------------------------------------</p>
-<p class="p1"><span class="Apple-converted-space">    </span>function updateFlow() {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const activeSteps = getCurrentSteps();</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>// Check boundaries</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (currentStep &gt;= activeSteps.length) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>currentStep = activeSteps.length - 1;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (currentStep &lt; 0) currentStep = 0;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>// Update UI Header</p>
-<p class="p1"><span class="Apple-converted-space">      </span>stepIndicator.textContent = `Step ${currentStep + 1}/${activeSteps.length}`;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>canvasTitle.textContent = currentMode === 'typical' ? "Typical Co-Sell Path Simulation" : "Special Consideration Path Simulation";</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>// 1. Reset all nodes to base state</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const allNodeIds = [</p>
-<p class="p1"><span class="Apple-converted-space">        </span>'luke_start', 'luke_engage', 'gustav_qualify', 'gustav_decision',<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>'wyatt_decision', 'wyatt_engaged', 'luc_takeover', 'luc_runs', 'shortcut_start'</p>
-<p class="p1"><span class="Apple-converted-space">      </span>];</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>allNodeIds.forEach(id =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const node = document.getElementById(`node_${id}`);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (node) {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>// Clear styles</p>
-<p class="p1"><span class="Apple-converted-space">          </span>node.className = "cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-black p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative group shadow-sm";</p>
-<p class="p2"><span class="Apple-converted-space">          </span></p>
-<p class="p1"><span class="Apple-converted-space">          </span>// Keep aspect ratio for diamond decisions</p>
-<p class="p1"><span class="Apple-converted-space">          </span>if (id === 'gustav_decision' || id === 'wyatt_decision') {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>node.className = "cursor-pointer transition-all duration-300 w-28 bg-brand-white dark:bg-brand-black p-3 rounded-xl border border-brand-slate/20 text-xs text-center relative flex flex-col justify-center items-center aspect-square shadow-sm";</p>
-<p class="p1"><span class="Apple-converted-space">          </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>// 2. Highlight nodes along the active pathway</p>
-<p class="p1"><span class="Apple-converted-space">      </span>for (let i = 0; i &lt;= currentStep; i++) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const step = activeSteps[i];</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const node = document.getElementById(`node_${step.nodeId}`);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (node) {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>if (i === currentStep) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>// This is the ACTIVE step</p>
-<p class="p1"><span class="Apple-converted-space">            </span>node.classList.remove('border-brand-slate/20');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>node.classList.add('border-brand-orange', 'ring-2', 'ring-brand-orange/20', 'scale-105', 'z-10');</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (step.nodeId.includes('luke')) {</p>
-<p class="p1"><span class="Apple-converted-space">              </span>node.classList.add('glow-brand-slate');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else if (step.nodeId.includes('gustav')) {</p>
-<p class="p1"><span class="Apple-converted-space">              </span>node.classList.add('glow-brand-gold', 'border-brand-gold');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else if (step.nodeId.includes('wyatt')) {</p>
-<p class="p1"><span class="Apple-converted-space">              </span>node.classList.add('glow-brand-orange', 'border-brand-orange');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">              </span>node.classList.add('glow-brand-brown', 'border-brand-brown');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">          </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Visited step</p>
-<p class="p1"><span class="Apple-converted-space">            </span>node.classList.remove('border-brand-slate/20');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>node.classList.add('border-brand-gold', 'bg-brand-cream/20', 'dark:bg-brand-slate/10');</p>
-<p class="p1"><span class="Apple-converted-space">          </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>// Special conditional line connector highlights</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const conn1 = document.getElementById('conn_1');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const conn2 = document.getElementById('conn_2');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const conn3 = document.getElementById('conn_3');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const conn4 = document.getElementById('conn_4');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const connShortcut = document.getElementById('conn_shortcut');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>// Reset connector states</p>
-<p class="p1"><span class="Apple-converted-space">      </span>[conn1, conn2, conn3, conn4, connShortcut].forEach(conn =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (conn) {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>conn.classList.remove('bg-brand-orange');</p>
-<p class="p1"><span class="Apple-converted-space">          </span>conn.classList.add('bg-brand-slate/20');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>// Highlight connectors based on progress</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (currentMode === 'typical') {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const currentActiveNodeId = activeSteps[currentStep].nodeId;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (currentStep &gt;= 1) conn1.classList.add('bg-brand-orange');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (currentStep &gt;= 2) conn2.classList.add('bg-brand-orange');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (currentStep &gt;= 4) conn3.classList.add('bg-brand-orange');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (currentStep &gt;= 6) conn4.classList.add('bg-brand-orange');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (currentStep &gt;= 1) connShortcut.classList.add('bg-brand-orange');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (currentStep &gt;= 2) conn4.classList.add('bg-brand-orange');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>// Hide or fade out elements that are completely irrelevant to shortcut mode</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const laneGustav = document.getElementById('lane_gustav');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (currentMode === 'shortcut') {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>laneGustav.classList.add('opacity-30');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('node_wyatt_decision').classList.add('opacity-30');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('node_wyatt_engaged').classList.add('opacity-30');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('node_shortcut_start').classList.remove('bg-brand-cream/30', 'dark:bg-brand-slate/40', 'border-dashed');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('node_shortcut_start').classList.add('bg-brand-white', 'dark:bg-brand-black');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>laneGustav.classList.remove('opacity-30');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('node_wyatt_decision').classList.remove('opacity-30');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('node_wyatt_engaged').classList.remove('opacity-30');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('node_shortcut_start').classList.add('bg-brand-cream/30', 'dark:bg-brand-slate/40', 'border-dashed');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('node_shortcut_start').classList.remove('bg-brand-white', 'dark:bg-brand-black');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>// Update Text Displays</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const currentStepObj = activeSteps[currentStep];</p>
-<p class="p1"><span class="Apple-converted-space">      </span>commentaryText.innerHTML = `&lt;strong&gt;${currentStepObj.title}&lt;/strong&gt;&lt;br&gt;&lt;br&gt;${currentStepObj.commentary}`;</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>// Update Summary Output Box</p>
-<p class="p1"><span class="Apple-converted-space">      </span>let summaryText = `[Mode: ${currentMode === 'typical' ? 'Typical Co-Sell' : 'Special consideration'}] \n`;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>summaryText += `• Current Phase: ${currentStepObj.title}\n`;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>summaryText += `• Execution Action: ${currentStepObj.summary}\n`;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>summaryText += `• Alignment Parameters: Opportunity Real: ${chkReal.checked ? 'Yes' : 'No'} | Owned by DG Seller: ${chkDGSeller.checked ? 'Yes' : 'No'} | AI SolSpec: ${chkGustavInvolved.checked ? 'Active' : 'Bypassed'}`;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flowSummaryBox.textContent = summaryText;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>// Update navigation button states</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btnPrev.disabled = currentStep === 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btnNext.disabled = currentStep === activeSteps.length - 1;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Manual Node Click Selector</p>
-<p class="p1"><span class="Apple-converted-space">    </span>window.selectNode = function(nodeId) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const activeSteps = getCurrentSteps();</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const stepIdx = activeSteps.findIndex(step =&gt; step.nodeId === nodeId);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (stepIdx !== -1) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>currentStep = stepIdx;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>updateFlow();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>stopAutoplay();</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// ----------------------------------------------------</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// SIMULATION STEP CONTROLLERS</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// ----------------------------------------------------</p>
-<p class="p1"><span class="Apple-converted-space">    </span>function nextStep() {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const activeSteps = getCurrentSteps();</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (currentStep &lt; activeSteps.length - 1) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>currentStep++;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>updateFlow();</p>
-<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>stopAutoplay();</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Trigger key transitions backward</p>
-<p class="p1"><span class="Apple-converted-space">    </span>function prevStep() {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (currentStep &gt; 0) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>currentStep--;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>updateFlow();</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Reset loop attributes</p>
-<p class="p1"><span class="Apple-converted-space">    </span>function resetSim() {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>currentStep = 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>updateFlow();</p>
-<p class="p1"><span class="Apple-converted-space">      </span>stopAutoplay();</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Play flow automation</p>
-<p class="p1"><span class="Apple-converted-space">    </span>function startAutoplay() {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (autoPlayInterval) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>stopAutoplay();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>return;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>btnAutoplay.innerHTML = `</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;svg class="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"&gt;&lt;/circle&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"&gt;&lt;/path&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>Pause Simulation</p>
-<p class="p1"><span class="Apple-converted-space">      </span>`;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btnAutoplay.classList.add('bg-brand-orange/10');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>autoPlayInterval = setInterval(() =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const activeSteps = getCurrentSteps();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (currentStep &gt;= activeSteps.length - 1) {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>resetSim();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>nextStep();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}, 2500);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>function stopAutoplay() {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (autoPlayInterval) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>clearInterval(autoPlayInterval);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>autoPlayInterval = null;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>btnAutoplay.innerHTML = `</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>Play Path Simulation</p>
-<p class="p1"><span class="Apple-converted-space">        </span>`;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>btnAutoplay.classList.remove('bg-brand-orange/10');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// ----------------------------------------------------</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// CLIPBOARD ACTIONS</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// ----------------------------------------------------</p>
-<p class="p1"><span class="Apple-converted-space">    </span>window.copyToClipboard = function() {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const summaryText = flowSummaryBox.textContent;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const textarea = document.createElement('textarea');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>textarea.value = summaryText;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>document.body.appendChild(textarea);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>textarea.select();</p>
-<p class="p1"><span class="Apple-converted-space">      </span>document.execCommand('copy');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>document.body.removeChild(textarea);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>// Toast notification</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const toast = document.getElementById('toast');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>toast.classList.remove('translate-y-20', 'opacity-0');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>toast.classList.add('translate-y-0', 'opacity-100');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>setTimeout(() =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>toast.classList.remove('translate-y-0', 'opacity-100');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>toast.classList.add('translate-y-20', 'opacity-0');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}, 2500);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// ----------------------------------------------------</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// SYSTEM TOGGLE HANDLERS</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// ----------------------------------------------------</p>
-<p class="p1"><span class="Apple-converted-space">    </span>btnTypical.addEventListener('click', () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>currentMode = 'typical';</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btnTypical.className = "w-full text-left p-4 rounded-lg border-2 border-brand-orange bg-brand-cream/30 text-brand-black dark:text-brand-cream transition-all flex flex-col gap-1";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btnShortcut.className = "w-full text-left p-4 rounded-lg border-2 border-transparent bg-brand-cream/10 dark:bg-brand-slate/20 text-brand-slate dark:text-brand-cream/70 hover:bg-brand-cream/30 dark:hover:bg-brand-slate/30 transition-all flex flex-col gap-1";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>toggleQualifyContainer.classList.remove('opacity-40', 'pointer-events-none');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>toggleOwnerContainer.classList.remove('opacity-40', 'pointer-events-none');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>resetSim();</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>btnShortcut.addEventListener('click', () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>currentMode = 'shortcut';</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btnShortcut.className = "w-full text-left p-4 rounded-lg border-2 border-brand-orange bg-brand-cream/30 text-brand-black dark:text-brand-cream transition-all flex flex-col gap-1";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btnTypical.className = "w-full text-left p-4 rounded-lg border-2 border-transparent bg-brand-cream/10 dark:bg-brand-slate/20 text-brand-slate dark:text-brand-cream/70 hover:bg-brand-cream/30 dark:hover:bg-brand-slate/30 transition-all flex flex-col gap-1";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>toggleQualifyContainer.classList.add('opacity-40', 'pointer-events-none');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>toggleOwnerContainer.classList.add('opacity-40', 'pointer-events-none');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>resetSim();</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>chkReal.addEventListener('change', (e) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>txtReal.textContent = e.target.checked ? "Yes" : "No";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>resetSim();</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>chkDGSeller.addEventListener('change', (e) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>txtDGSeller.textContent = e.target.checked ? "Yes" : "No";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>resetSim();</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>chkGustavInvolved.addEventListener('change', (e) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>txtGustavInvolved.textContent = e.target.checked ? "Yes" : "No";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>updateFlow();</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Setup simulation triggers</p>
-<p class="p1"><span class="Apple-converted-space">    </span>btnNext.addEventListener('click', nextStep);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>btnPrev.addEventListener('click', prevStep);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>btnReset.addEventListener('click', resetSim);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>btnAutoplay.addEventListener('click', startAutoplay);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// ----------------------------------------------------</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// THEME HANDLING</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// ----------------------------------------------------</p>
-<p class="p1"><span class="Apple-converted-space">    </span>themeToggle.addEventListener('click', () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>document.documentElement.classList.toggle('dark');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Check system preference on load</p>
-<p class="p1"><span class="Apple-converted-space">    </span>if (window.matchMedia('(prefers-color-scheme: dark)').matches) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>document.documentElement.classList.add('dark');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Boot system</p>
-<p class="p1"><span class="Apple-converted-space">    </span>updateFlow();</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+<body class="bg-brand-cream/40 text-brand-black dark:bg-brand-black dark:text-brand-cream min-h-screen transition-colors duration-200">
+
+  <div class="max-w-[1600px] mx-auto p-4 md:p-6 lg:p-8 flex flex-col gap-6">
+    
+    <!-- HEADER -->
+    <header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-brand-slate/20">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-1 text-xs font-semibold bg-brand-orange text-white rounded-full">Q2 Strategy</span>
+          <span class="text-xs text-brand-slate dark:text-brand-gold">• Team-Based Co-Selling</span>
+        </div>
+        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mt-1 bg-gradient-to-r from-brand-black to-brand-slate dark:from-white dark:to-brand-gold bg-clip-text text-transparent">
+          Datagrid & Procore Co-Sell Workflow
+        </h1>
+        <p class="text-brand-slate dark:text-brand-cream/80 mt-1 max-w-2xl text-sm">
+          Interactive simulation showing how opportunities route between Procore AMs, Procore AI SolSpecs, and Datagrid Account Sellers.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button id="themeToggle" class="p-2 rounded-lg bg-brand-white dark:bg-brand-slate/20 border border-brand-slate/20 dark:border-brand-slate/40 hover:bg-brand-cream transition" title="Toggle Theme">
+          <!-- Sun Icon in Dark Mode, Moon Icon in Light Mode -->
+          <svg id="themeMoon" class="w-5 h-5 hidden dark:block text-brand-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+          </svg>
+          <svg id="themeSun" class="w-5 h-5 block dark:hidden text-brand-slate" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- WORKSPACE -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      
+      <!-- CONTROLS & SIDEBAR PANEL (4 Cols) -->
+      <section class="lg:col-span-4 flex flex-col gap-6">
+        
+        <!-- Workflow Scenario Chooser -->
+        <div class="bg-brand-white dark:bg-brand-black border border-brand-slate/20 rounded-xl p-5 shadow-sm flex flex-col gap-4">
+          <h2 class="text-md font-bold text-brand-black dark:text-brand-white flex items-center gap-2">
+            <span class="w-2.5 h-2.5 bg-brand-orange rounded-full animate-pulse"></span>
+            Select Workflow Mode
+          </h2>
+          <div class="grid grid-cols-1 gap-2">
+            <button id="btnTypical" class="w-full text-left p-4 rounded-lg border-2 border-brand-orange bg-brand-cream/30 text-brand-black dark:text-brand-cream transition-all flex flex-col gap-1">
+              <span class="font-semibold text-sm text-brand-orange">Typical Co-Sell Path</span>
+              <span class="text-xs text-brand-slate dark:text-brand-gold/80">The standard routing. Procore AM engages Procore AI SolSpec, who qualifies the opp and loops in Datagrid.</span>
+            </button>
+            <button id="btnShortcut" class="w-full text-left p-4 rounded-lg border-2 border-transparent bg-brand-cream/10 dark:bg-brand-slate/20 text-brand-slate dark:text-brand-cream/70 hover:bg-brand-cream/30 dark:hover:bg-brand-slate/30 transition-all flex flex-col gap-1">
+              <span class="font-semibold text-sm text-brand-black dark:text-brand-cream">Special Consideration Path</span>
+              <span class="text-xs text-brand-slate/80 dark:text-brand-cream/60">DG Seller is already aware. Bypass Procore AI SolSpec's queue and directly assign execution to the DG aligned specialist.</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Live Sandbox Logic Toggles -->
+        <div id="sandboxToggles" class="bg-brand-white dark:bg-brand-black border border-brand-slate/20 rounded-xl p-5 shadow-sm flex flex-col gap-4">
+          <h2 class="text-md font-bold text-brand-black dark:text-brand-white flex items-center gap-2">
+            <svg class="w-5 h-5 text-brand-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+            </svg>
+            Interactive Rules Sandbox
+          </h2>
+          <p class="text-xs text-brand-slate dark:text-brand-gold/80">Dynamically update decision outcomes to simulate different real-world scenarios:</p>
+          
+          <div class="space-y-4 pt-2">
+            <!-- Toggle 1: Opportunity Qualification -->
+            <div class="flex items-center justify-between" id="toggleQualifyContainer">
+              <div>
+                <label class="text-xs font-semibold block text-brand-slate dark:text-brand-cream">Is the Opportunity Real?</label>
+                <span class="text-[10px] text-brand-slate/70 block">Needs Datagrid coverage</span>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="chkReal" class="sr-only peer" checked>
+                <div class="w-11 h-6 bg-brand-slate/30 peer-focus:outline-none rounded-full peer dark:bg-brand-slate/50 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-brand-white after:border-brand-slate/30 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-orange"></div>
+                <span class="ml-2 text-xs font-medium text-brand-slate dark:text-brand-cream min-w-[24px]" id="txtReal">Yes</span>
+              </label>
+            </div>
+
+            <!-- Toggle 2: Owned by DG Seller? -->
+            <div class="flex items-center justify-between" id="toggleOwnerContainer">
+              <div>
+                <label class="text-xs font-semibold block text-brand-slate dark:text-brand-cream">DG Account Owned by DG Seller?</label>
+                <span class="text-[10px] text-brand-slate/70 block">Trumps Procore alignment</span>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="chkDGSeller" class="sr-only peer" checked>
+                <div class="w-11 h-6 bg-brand-slate/30 peer-focus:outline-none rounded-full peer dark:bg-brand-slate/50 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-brand-white after:border-brand-slate/30 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-brown"></div>
+                <span class="ml-2 text-xs font-medium text-brand-slate dark:text-brand-cream min-w-[24px]" id="txtDGSeller">Yes</span>
+              </label>
+            </div>
+
+            <!-- Toggle 3: AI SolSpec Stay Involved? -->
+            <div class="flex items-center justify-between">
+              <div>
+                <label class="text-xs font-semibold block text-brand-slate dark:text-brand-cream">AI SolSpec stays involved?</label>
+                <span class="text-[10px] text-brand-slate/70 block">Provide joint specialist help</span>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="chkGustavInvolved" class="sr-only peer" checked>
+                <div class="w-11 h-6 bg-brand-slate/30 peer-focus:outline-none rounded-full peer dark:bg-brand-slate/50 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-brand-white after:border-brand-slate/30 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-orange"></div>
+                <span class="ml-2 text-xs font-medium text-brand-slate dark:text-brand-cream min-w-[24px]" id="txtGustavInvolved">Yes</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulation Player Controls -->
+        <div class="bg-brand-white dark:bg-brand-black border border-brand-slate/20 rounded-xl p-5 shadow-sm flex flex-col gap-4">
+          <div class="flex justify-between items-center">
+            <h2 class="text-md font-bold text-brand-black dark:text-brand-white">Flow Simulation</h2>
+            <span id="stepIndicator" class="text-xs font-semibold px-2 py-0.5 bg-brand-cream text-brand-brown rounded-md">Step 1/5</span>
+          </div>
+          
+          <div class="flex gap-2">
+            <button id="btnPrev" class="flex-1 py-2 text-sm font-medium border border-brand-slate/30 hover:bg-brand-cream/30 dark:hover:bg-brand-slate/20 rounded-lg transition disabled:opacity-50" disabled>
+              Previous
+            </button>
+            <button id="btnNext" class="flex-1 py-2 text-sm font-medium bg-brand-orange hover:bg-brand-orange/90 text-brand-white rounded-lg transition">
+              Next Step
+            </button>
+          </div>
+
+          <div class="flex gap-2">
+            <button id="btnAutoplay" class="w-full py-2 text-xs font-semibold border border-brand-orange text-brand-orange hover:bg-brand-orange/10 rounded-lg transition flex items-center justify-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/>
+              </svg>
+              Play Path Simulation
+            </button>
+            <button id="btnReset" class="py-2 px-3 text-xs font-semibold border border-brand-slate/20 hover:bg-brand-cream rounded-lg transition" title="Reset Simulation">
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- Detailed Explainer Card -->
+        <div class="bg-gradient-to-br from-brand-black to-brand-brown text-brand-white rounded-xl p-5 shadow-md flex flex-col gap-3">
+          <h3 class="font-bold text-sm tracking-wide text-brand-gold uppercase">Context & Commentary</h3>
+          <div id="commentaryText" class="text-xs text-brand-cream/90 leading-relaxed min-h-[100px]">
+            The Procore AM kicks off the co-selling workflow by spotting a possible Datagrid/AI opportunity in the pipeline. Ready to coordinate!
+          </div>
+        </div>
+
+      </section>
+
+      <!-- CANVAS / GRID CONTAINER (8 Cols) -->
+      <section class="lg:col-span-8 bg-brand-white dark:bg-brand-black border border-brand-slate/20 rounded-xl shadow-sm overflow-hidden flex flex-col">
+        
+        <!-- Interactive Mode Label & Canvas Controls -->
+        <div class="px-6 py-4 border-b border-brand-slate/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-2 bg-brand-cream/30 dark:bg-brand-slate/10">
+          <div>
+            <h3 class="font-bold text-brand-black dark:text-brand-white" id="canvasTitle">Typical Co-Sell Path Simulation</h3>
+            <p class="text-xs text-brand-slate/80 dark:text-brand-gold/80">Click on any highlight node below to inspect its operational criteria manually.</p>
+          </div>
+          <div class="flex gap-2 text-xs">
+            <span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-brand-cream/50 dark:bg-brand-slate/20 font-medium text-brand-slate">
+              <span class="w-2 h-2 rounded-full bg-brand-slate/40"></span> Unvisited
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-brand-orange/15 font-medium text-brand-orange">
+              <span class="w-2 h-2 rounded-full bg-brand-orange animate-ping"></span> Active Step
+            </span>
+          </div>
+        </div>
+
+        <!-- The Interactive Diagram Board (Multi-lane) -->
+        <div class="p-6 overflow-x-auto relative min-w-[700px] lane-grid">
+          
+          <!-- SWIMLANES MATRIX -->
+          <div class="flex flex-col gap-4 relative">
+
+            <!-- LANE 1: PROCORE AM -->
+            <div class="flex items-center gap-4 py-2 border-b border-dashed border-brand-slate/10">
+              <!-- Lane Header (Sticky Left) -->
+              <div class="w-32 flex-shrink-0 bg-brand-cream/60 dark:bg-brand-slate/20 rounded-lg p-3 border-l-4 border-brand-slate text-left min-h-[4.5rem] flex items-center">
+                <div class="font-bold text-sm text-brand-black dark:text-brand-white">Procore AM</div>
+              </div>
+              
+              <!-- Lane Nodes -->
+              <div class="flex flex-1 items-center gap-6">
+                <!-- Node: Identify Opp -->
+                <div id="node_luke_start" onclick="selectNode('luke_start')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative group">
+                  <div class="absolute -top-2 left-4 px-1.5 py-0.2 bg-brand-cream dark:bg-brand-slate text-brand-brown dark:text-brand-cream text-[8px] font-bold rounded">Step 1</div>
+                  <h4 class="font-bold text-brand-black dark:text-brand-cream">Identifies Datagrid Opp</h4>
+                  <p class="text-[10px] text-brand-slate mt-1">Believes there is AI/DG potential.</p>
+                </div>
+
+                <!-- Connector Line -->
+                <div class="w-8 h-0.5 bg-brand-slate/20" id="conn_1"></div>
+
+                <!-- Node: Engages AI SolSpec -->
+                <div id="node_luke_engage" onclick="selectNode('luke_engage')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative group">
+                  <div class="absolute -top-2 left-4 px-1.5 py-0.2 bg-brand-cream dark:bg-brand-slate text-brand-brown dark:text-brand-cream text-[8px] font-bold rounded">Step 2</div>
+                  <h4 class="font-bold text-brand-black dark:text-brand-cream">Engages AI SolSpec</h4>
+                  <p class="text-[10px] text-brand-slate mt-1">Direct instruction to involve specialist.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- LANE 2: PROCORE AI SOLSPEC -->
+            <div id="lane_gustav" class="flex items-center gap-4 py-2 border-b border-dashed border-brand-slate/10 transition-opacity duration-300">
+              <!-- Lane Header -->
+              <div class="w-32 flex-shrink-0 bg-brand-cream/30 dark:bg-brand-slate/20 rounded-lg p-3 border-l-4 border-brand-gold text-left min-h-[4.5rem] flex items-center">
+                <div class="font-bold text-sm text-brand-black dark:text-brand-white">Procore AI SolSpec</div>
+              </div>
+
+              <!-- Lane Nodes -->
+              <div class="flex flex-1 items-center gap-6">
+                <!-- Filler Space to align visually under Luke's engage node -->
+                <div class="w-44 flex-shrink-0"></div>
+                <div class="w-8 h-0.5 bg-transparent"></div>
+
+                <!-- Node: AI SolSpec Qualifies -->
+                <div id="node_gustav_qualify" onclick="selectNode('gustav_qualify')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative group">
+                  <div class="absolute -top-2 left-4 px-1.5 py-0.2 bg-brand-cream dark:bg-brand-slate text-brand-brown dark:text-brand-cream text-[8px] font-bold rounded">Step 3</div>
+                  <h4 class="font-bold text-brand-black dark:text-brand-cream">Qualifies Opportunity</h4>
+                  <p class="text-[10px] text-brand-slate mt-1">Convenes discovery or internal review.</p>
+                </div>
+
+                <div class="w-8 h-0.5 bg-brand-slate/20" id="conn_2"></div>
+
+                <!-- Node: Decision - Is Real? -->
+                <div id="node_gustav_decision" onclick="selectNode('gustav_decision')" class="cursor-pointer transition-all duration-300 w-28 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-xl border border-brand-slate/20 text-xs text-center relative flex flex-col justify-center items-center aspect-square shadow-sm">
+                  <span class="text-[9px] font-bold text-brand-orange">DECISION</span>
+                  <h4 class="font-bold text-brand-black dark:text-brand-cream leading-tight">Is Opp Real?</h4>
+                </div>
+              </div>
+            </div>
+
+            <!-- LANE 3: DG SELLER -->
+            <div class="flex items-center gap-4 py-2 border-b border-dashed border-brand-slate/10">
+              <!-- Lane Header -->
+              <div class="w-32 flex-shrink-0 bg-brand-cream/40 dark:bg-brand-slate/20 rounded-lg p-3 border-l-4 border-brand-orange text-left min-h-[4.5rem] flex items-center">
+                <div class="font-bold text-sm text-brand-black dark:text-brand-white">DG Seller</div>
+              </div>
+
+              <!-- Lane Nodes -->
+              <div class="flex flex-1 items-center gap-6">
+                <!-- visual alignment offsets -->
+                <div class="w-44 flex-shrink-0"></div>
+                <div class="w-8 h-0.5 bg-transparent"></div>
+                <div class="w-44 flex-shrink-0"></div>
+                <div class="w-8 h-0.5 bg-transparent"></div>
+                
+                <!-- Decision Point for Alignment -->
+                <div id="node_wyatt_decision" onclick="selectNode('wyatt_decision')" class="cursor-pointer transition-all duration-300 w-28 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-xl border border-brand-slate/20 text-xs text-center relative flex flex-col justify-center items-center aspect-square shadow-sm">
+                  <span class="text-[9px] font-bold text-brand-brown">ALIGNMENT</span>
+                  <h4 class="font-bold text-brand-black dark:text-brand-cream leading-tight">DG Seller's Account?</h4>
+                </div>
+
+                <div class="w-8 h-0.5 bg-brand-slate/20" id="conn_3"></div>
+
+                <!-- Node: Wyatt loop in -->
+                <div id="node_wyatt_engaged" onclick="selectNode('wyatt_engaged')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative">
+                  <h4 class="font-bold text-brand-black dark:text-brand-cream">DG Seller Brought In</h4>
+                  <p class="text-[10px] text-brand-slate mt-1">DG alignment rules trigger next action.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- LANE 4: DG ALIGNED PROCORE AI SOLSPEC -->
+            <div class="flex items-center gap-4 py-2">
+              <!-- Lane Header -->
+              <div class="w-32 flex-shrink-0 bg-brand-cream/50 dark:bg-brand-slate/20 rounded-lg p-3 border-l-4 border-brand-brown text-left min-h-[4.5rem] flex items-center">
+                <div class="font-bold text-xs text-brand-black dark:text-brand-white uppercase leading-tight">DG aligned Procore AI SolSpec</div>
+              </div>
+
+              <!-- Lane Nodes -->
+              <div class="flex flex-1 items-center gap-6">
+                <!-- Shortcut Step Start Node (Hidden/grey unless special mode activated) -->
+                <div id="node_shortcut_start" onclick="selectNode('shortcut_start')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-cream/30 dark:bg-brand-slate/40 p-3 rounded-lg border border-dashed border-brand-slate/30 text-xs text-center relative">
+                  <div class="absolute -top-2 left-4 px-1.5 py-0.2 bg-brand-orange text-brand-white text-[8px] font-bold rounded">Shortcut</div>
+                  <h4 class="font-bold text-brand-slate dark:text-brand-cream">DG Seller Already Aware</h4>
+                  <p class="text-[10px] text-brand-slate/80 mt-1">Bypass typical discovery flow</p>
+                </div>
+
+                <div class="w-8 h-0.5 bg-transparent" id="conn_shortcut"></div>
+
+                <div class="w-44 flex-shrink-0"></div>
+                <div class="w-8 h-0.5 bg-transparent"></div>
+
+                <!-- Node: DG SolSpec takes over -->
+                <div id="node_luc_takeover" onclick="selectNode('luc_takeover')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative">
+                  <h4 class="font-bold text-brand-black dark:text-brand-cream">DG aligned Procore AI SolSpec Takes Over</h4>
+                  <p class="text-[10px] text-brand-slate mt-1">Runs active co-sell interaction.</p>
+                </div>
+
+                <div class="w-8 h-0.5 bg-brand-slate/20" id="conn_4"></div>
+
+                <!-- Node: DG SolSpec runs deal -->
+                <div id="node_luc_runs" onclick="selectNode('luc_runs')" class="cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-slate/20 p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative">
+                  <div class="absolute -top-2 right-4 px-1.5 py-0.2 bg-brand-orange text-brand-white text-[8px] font-bold rounded">Execution</div>
+                  <h4 class="font-bold text-brand-black dark:text-brand-cream text-left">DG aligned Procore AI SolSpec Runs the Opp</h4>
+                  <p class="text-[10px] text-brand-slate mt-1">Supported by joint team coverage.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- PATH FLOW SUMMARY OUTPUT -->
+        <div class="mt-auto border-t border-brand-slate/10 p-5 bg-brand-cream/10">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-brand-slate">Generated Strategy Summary</h4>
+            <button onclick="copyToClipboard()" class="text-xs font-medium text-brand-orange hover:text-brand-orange/80 flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m-2 4h.01M12 12h.01M12 16h.01" />
+              </svg>
+              Copy Details
+            </button>
+          </div>
+          <div id="flowSummaryBox" class="p-4 rounded-lg bg-brand-white dark:bg-brand-black border border-brand-slate/20 text-xs leading-relaxed text-brand-slate dark:text-brand-cream min-h-[50px]">
+            Loading current scenario status...
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- EXPLANATORY FAQ & RULES SECTION -->
+    <section class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-brand-slate/20">
+      <div class="p-4 rounded-lg bg-brand-cream/20 border border-brand-slate/10">
+        <h4 class="font-bold text-sm text-brand-black dark:text-brand-white">The Power of Co-Selling</h4>
+        <p class="text-xs text-brand-slate dark:text-brand-gold mt-1 leading-relaxed">
+          In Q2, co-selling means combining forces. When the Procore AI SolSpec ensures an opportunity is viable, Datagrid Specialists take the reins to deliver domain-specific AI value.
+        </p>
+      </div>
+      <div class="p-4 rounded-lg bg-brand-cream/20 border border-brand-slate/10">
+        <h4 class="font-bold text-sm text-brand-black dark:text-brand-white">Alignment Hierarchy</h4>
+        <p class="text-xs text-brand-slate dark:text-brand-gold mt-1 leading-relaxed">
+          Datagrid account alignment trumps Procore alignments. The DG aligned Procore AI SolSpec's synchronization with the DG Seller ensures consistency for accounts the DG Seller already owns or handles.
+        </p>
+      </div>
+      <div class="p-4 rounded-lg bg-brand-cream/20 border border-brand-slate/10">
+        <h4 class="font-bold text-sm text-brand-black dark:text-brand-white">Procore AI SolSpec's Flexible Role</h4>
+        <p class="text-xs text-brand-slate dark:text-brand-gold mt-1 leading-relaxed">
+          Because everyone is paid on shared team metrics, the Procore AI SolSpec has total freedom to hand over the opportunity, assist behind the scenes, or co-manage alongside the execution lead.
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="fixed bottom-4 right-4 bg-brand-black text-brand-white text-xs py-2 px-4 rounded shadow-lg translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2 border border-brand-orange">
+    <svg class="w-4 h-4 text-brand-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+    </svg>
+    <span>Text copied to clipboard!</span>
+  </div>
+
+  <!-- JAVASCRIPT SIMULATOR CONTROLLER -->
+  <script>
+    // ----------------------------------------------------
+    // INITIAL SYSTEM STATES
+    // ----------------------------------------------------
+    let currentMode = 'typical'; // 'typical' or 'shortcut'
+    let currentStep = 0; // index tracking simulation step
+    let autoPlayInterval = null;
+
+    // Elements mapping
+    const btnTypical = document.getElementById('btnTypical');
+    const btnShortcut = document.getElementById('btnShortcut');
+    const canvasTitle = document.getElementById('canvasTitle');
+    const stepIndicator = document.getElementById('stepIndicator');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    const btnAutoplay = document.getElementById('btnAutoplay');
+    const btnReset = document.getElementById('btnReset');
+    const commentaryText = document.getElementById('commentaryText');
+    const flowSummaryBox = document.getElementById('flowSummaryBox');
+    const themeToggle = document.getElementById('themeToggle');
+
+    // Toggles mapping
+    const chkReal = document.getElementById('chkReal');
+    const chkDGSeller = document.getElementById('chkDGSeller');
+    const chkGustavInvolved = document.getElementById('chkGustavInvolved');
+    const txtReal = document.getElementById('txtReal');
+    const txtDGSeller = document.getElementById('txtDGSeller');
+    const txtGustavInvolved = document.getElementById('txtGustavInvolved');
+
+    const toggleQualifyContainer = document.getElementById('toggleQualifyContainer');
+    const toggleOwnerContainer = document.getElementById('toggleOwnerContainer');
+
+    // ----------------------------------------------------
+    // DEFINED STEPS & NODE IDs
+    // ----------------------------------------------------
+    
+    // TYPICAL PATH CONFIGURATION
+    const typicalSteps = [
+      {
+        nodeId: 'luke_start',
+        title: 'Procore AM Identifies Potential Opportunity',
+        commentary: 'The Procore AM spots a potential Datagrid or AI opportunity within the account pipeline. Because of standard guidelines, they start the formal co-sell procedure.',
+        summary: 'Procore AM flags potential Datagrid/AI deal in workspace.'
+      },
+      {
+        nodeId: 'luke_engage',
+        title: 'Procore AM Engages Procore AI SolSpec',
+        commentary: 'The Procore AM officially engages the Procore AI SolSpec (as instructed) to qualification standards. He opens the loop for co-sell coordination.',
+        summary: 'Procore AM routes initial opportunity parameters to Procore AI SolSpec.'
+      },
+      {
+        nodeId: 'gustav_qualify',
+        title: 'Procore AI SolSpec Evaluates & Qualifies',
+        commentary: 'The Procore AI SolSpec organizes initial contact or hosts an internal coordination sync with the Procore AM to discover details and size the opportunity.',
+        summary: 'Procore AI SolSpec qualifies the opportunity to assess coverage scope.'
+      },
+      {
+        nodeId: 'gustav_decision',
+        title: 'Decision Point: Is the Opp Valid?',
+        commentary: 'The Procore AI SolSpec reviews if there is a real, high-priority deal. (If "Is the Opportunity Real" is toggled OFF, the deal closes/halts here; if YES, routing proceeds).',
+        summary: 'Qualification gate: Checking validity and active team availability.'
+      },
+      {
+        nodeId: 'wyatt_decision',
+        title: 'Alignment Check: DG Seller Account?',
+        commentary: 'The Procore AI SolSpec engages the Datagrid team. Because Q2 mandates a co-sell approach, we query ownership. If DG Seller owns the account, special rules apply.',
+        summary: 'Account ownership validation step for DG Seller.'
+      },
+      {
+        nodeId: 'wyatt_engaged',
+        title: 'DG Seller is Looped In',
+        commentary: 'Since the DG Seller is confirmed as the Datagrid owner of this account, they are formally pulled into the workspace.',
+        summary: 'DG Seller is looped into communications as primary account holder.'
+      },
+      {
+        nodeId: 'luc_takeover',
+        title: 'DG aligned Procore AI SolSpec Takes Over',
+        commentary: 'Because the DG aligned Procore AI SolSpec is aligned with the DG Seller on the Datagrid business unit (and Datagrid structures trump Procore alignments), they step in to run strategy.',
+        summary: 'DG aligned Procore AI SolSpec takes lead of the opportunity execution phase.'
+      },
+      {
+        nodeId: 'luc_runs',
+        title: 'Deal Execution Run by DG aligned Procore AI SolSpec',
+        commentary: 'The DG aligned Procore AI SolSpec manages the opportunity going forward. The Procore AI SolSpec remains available as a specialist overlay resource if teamwork parameters call for it!',
+        summary: 'DG aligned Procore AI SolSpec runs the deal. Team metrics protect all stakeholders.'
+      }
+    ];
+
+    // SHORTCUT PATH CONFIGURATION (DG Seller already aware)
+    const shortcutSteps = [
+      {
+        nodeId: 'shortcut_start',
+        title: 'Special Consideration: DG Seller Aware',
+        commentary: 'The DG Seller is already independently aware of this opportunity, meaning the Datagrid team has pre-engaged.',
+        summary: 'Special consideration path: bypassing early qualification lines.'
+      },
+      {
+        nodeId: 'luc_takeover',
+        title: 'DG aligned Procore AI SolSpec Takes Over',
+        commentary: 'Since the DG team is already engaged and the DG aligned Procore AI SolSpec is aligned with the DG Seller, they bypass standard qualification protocols and assume immediate deal leadership.',
+        summary: 'Immediate handover of deal ownership straight to the DG aligned Procore AI SolSpec.'
+      },
+      {
+        nodeId: 'luc_runs',
+        title: 'DG aligned Procore AI SolSpec Progresses Deal Execution',
+        commentary: 'The DG aligned Procore AI SolSpec is running the deal actively. The Procore AI SolSpec may coordinate if needed, but primary execution overhead stays on them.',
+        summary: 'DG aligned Procore AI SolSpec is executing deal milestones under collaborative workspace standards.'
+      }
+    ];
+
+    // Get current active step list depending on the state
+    function getCurrentSteps() {
+      if (currentMode === 'shortcut') {
+        return shortcutSteps;
+      }
+      
+      // Filter typical steps dynamically based on sandbox settings
+      let steps = [...typicalSteps];
+      
+      // If NOT real/qualified, terminate path early
+      if (!chkReal.checked) {
+        steps = steps.slice(0, 4); // Cut off after Gustav Decision
+      } else {
+        // If real, check if DG Seller owns the account
+        if (!chkDGSeller.checked) {
+          // Skip "DG Seller is Brought In" node
+          steps = steps.filter(step => step.nodeId !== 'wyatt_engaged');
+        }
+      }
+      return steps;
+    }
+
+    // ----------------------------------------------------
+    // RENDERING & INTERACTION CONTROLLER
+    // ----------------------------------------------------
+    function updateFlow() {
+      const activeSteps = getCurrentSteps();
+      
+      // Check boundaries
+      if (currentStep >= activeSteps.length) {
+        currentStep = activeSteps.length - 1;
+      }
+      if (currentStep < 0) currentStep = 0;
+
+      // Update UI Header
+      stepIndicator.textContent = `Step ${currentStep + 1}/${activeSteps.length}`;
+      canvasTitle.textContent = currentMode === 'typical' ? "Typical Co-Sell Path Simulation" : "Special Consideration Path Simulation";
+
+      // 1. Reset all nodes to base state
+      const allNodeIds = [
+        'luke_start', 'luke_engage', 'gustav_qualify', 'gustav_decision', 
+        'wyatt_decision', 'wyatt_engaged', 'luc_takeover', 'luc_runs', 'shortcut_start'
+      ];
+      
+      allNodeIds.forEach(id => {
+        const node = document.getElementById(`node_${id}`);
+        if (node) {
+          // Clear styles
+          node.className = "cursor-pointer transition-all duration-300 w-44 bg-brand-white dark:bg-brand-black p-3 rounded-lg border border-brand-slate/20 text-xs text-center relative group shadow-sm";
+          
+          // Keep aspect ratio for diamond decisions
+          if (id === 'gustav_decision' || id === 'wyatt_decision') {
+            node.className = "cursor-pointer transition-all duration-300 w-28 bg-brand-white dark:bg-brand-black p-3 rounded-xl border border-brand-slate/20 text-xs text-center relative flex flex-col justify-center items-center aspect-square shadow-sm";
+          }
+        }
+      });
+
+      // 2. Highlight nodes along the active pathway
+      for (let i = 0; i <= currentStep; i++) {
+        const step = activeSteps[i];
+        const node = document.getElementById(`node_${step.nodeId}`);
+        if (node) {
+          if (i === currentStep) {
+            // This is the ACTIVE step
+            node.classList.remove('border-brand-slate/20');
+            node.classList.add('border-brand-orange', 'ring-2', 'ring-brand-orange/20', 'scale-105', 'z-10');
+            
+            if (step.nodeId.includes('luke')) {
+              node.classList.add('glow-brand-slate');
+            } else if (step.nodeId.includes('gustav')) {
+              node.classList.add('glow-brand-gold', 'border-brand-gold');
+            } else if (step.nodeId.includes('wyatt')) {
+              node.classList.add('glow-brand-orange', 'border-brand-orange');
+            } else {
+              node.classList.add('glow-brand-brown', 'border-brand-brown');
+            }
+          } else {
+            // Visited step
+            node.classList.remove('border-brand-slate/20');
+            node.classList.add('border-brand-gold', 'bg-brand-cream/20', 'dark:bg-brand-slate/10');
+          }
+        }
+      }
+
+      // Special conditional line connector highlights
+      const conn1 = document.getElementById('conn_1');
+      const conn2 = document.getElementById('conn_2');
+      const conn3 = document.getElementById('conn_3');
+      const conn4 = document.getElementById('conn_4');
+      const connShortcut = document.getElementById('conn_shortcut');
+
+      // Reset connector states
+      [conn1, conn2, conn3, conn4, connShortcut].forEach(conn => {
+        if (conn) {
+          conn.classList.remove('bg-brand-orange');
+          conn.classList.add('bg-brand-slate/20');
+        }
+      });
+
+      // Highlight connectors based on progress
+      if (currentMode === 'typical') {
+        const currentActiveNodeId = activeSteps[currentStep].nodeId;
+        if (currentStep >= 1) conn1.classList.add('bg-brand-orange');
+        if (currentStep >= 2) conn2.classList.add('bg-brand-orange');
+        if (currentStep >= 4) conn3.classList.add('bg-brand-orange');
+        if (currentStep >= 6) conn4.classList.add('bg-brand-orange');
+      } else {
+        if (currentStep >= 1) connShortcut.classList.add('bg-brand-orange');
+        if (currentStep >= 2) conn4.classList.add('bg-brand-orange');
+      }
+
+      // Hide or fade out elements that are completely irrelevant to shortcut mode
+      const laneGustav = document.getElementById('lane_gustav');
+      if (currentMode === 'shortcut') {
+        laneGustav.classList.add('opacity-30');
+        document.getElementById('node_wyatt_decision').classList.add('opacity-30');
+        document.getElementById('node_wyatt_engaged').classList.add('opacity-30');
+        document.getElementById('node_shortcut_start').classList.remove('bg-brand-cream/30', 'dark:bg-brand-slate/40', 'border-dashed');
+        document.getElementById('node_shortcut_start').classList.add('bg-brand-white', 'dark:bg-brand-black');
+      } else {
+        laneGustav.classList.remove('opacity-30');
+        document.getElementById('node_wyatt_decision').classList.remove('opacity-30');
+        document.getElementById('node_wyatt_engaged').classList.remove('opacity-30');
+        document.getElementById('node_shortcut_start').classList.add('bg-brand-cream/30', 'dark:bg-brand-slate/40', 'border-dashed');
+        document.getElementById('node_shortcut_start').classList.remove('bg-brand-white', 'dark:bg-brand-black');
+      }
+
+      // Update Text Displays
+      const currentStepObj = activeSteps[currentStep];
+      commentaryText.innerHTML = `<strong>${currentStepObj.title}</strong><br><br>${currentStepObj.commentary}`;
+      
+      // Update Summary Output Box
+      let summaryText = `[Mode: ${currentMode === 'typical' ? 'Typical Co-Sell' : 'Special consideration'}] \n`;
+      summaryText += `• Current Phase: ${currentStepObj.title}\n`;
+      summaryText += `• Execution Action: ${currentStepObj.summary}\n`;
+      summaryText += `• Alignment Parameters: Opportunity Real: ${chkReal.checked ? 'Yes' : 'No'} | Owned by DG Seller: ${chkDGSeller.checked ? 'Yes' : 'No'} | AI SolSpec: ${chkGustavInvolved.checked ? 'Active' : 'Bypassed'}`;
+      flowSummaryBox.textContent = summaryText;
+
+      // Update navigation button states
+      btnPrev.disabled = currentStep === 0;
+      btnNext.disabled = currentStep === activeSteps.length - 1;
+    }
+
+    // Manual Node Click Selector
+    window.selectNode = function(nodeId) {
+      const activeSteps = getCurrentSteps();
+      const stepIdx = activeSteps.findIndex(step => step.nodeId === nodeId);
+      if (stepIdx !== -1) {
+        currentStep = stepIdx;
+        updateFlow();
+        stopAutoplay();
+      }
+    }
+
+    // ----------------------------------------------------
+    // SIMULATION STEP CONTROLLERS
+    // ----------------------------------------------------
+    function nextStep() {
+      const activeSteps = getCurrentSteps();
+      if (currentStep < activeSteps.length - 1) {
+        currentStep++;
+        updateFlow();
+      } else {
+        stopAutoplay();
+      }
+    }
+
+    // Trigger key transitions backward
+    function prevStep() {
+      if (currentStep > 0) {
+        currentStep--;
+        updateFlow();
+      }
+    }
+
+    // Reset loop attributes
+    function resetSim() {
+      currentStep = 0;
+      updateFlow();
+      stopAutoplay();
+    }
+
+    // Play flow automation
+    function startAutoplay() {
+      if (autoPlayInterval) {
+        stopAutoplay();
+        return;
+      }
+      
+      btnAutoplay.innerHTML = `
+        <svg class="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Pause Simulation
+      `;
+      btnAutoplay.classList.add('bg-brand-orange/10');
+
+      autoPlayInterval = setInterval(() => {
+        const activeSteps = getCurrentSteps();
+        if (currentStep >= activeSteps.length - 1) {
+          resetSim();
+        } else {
+          nextStep();
+        }
+      }, 2500);
+    }
+
+    function stopAutoplay() {
+      if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = null;
+        btnAutoplay.innerHTML = `
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/>
+          </svg>
+          Play Path Simulation
+        `;
+        btnAutoplay.classList.remove('bg-brand-orange/10');
+      }
+    }
+
+    // ----------------------------------------------------
+    // CLIPBOARD ACTIONS
+    // ----------------------------------------------------
+    window.copyToClipboard = function() {
+      const summaryText = flowSummaryBox.textContent;
+      const textarea = document.createElement('textarea');
+      textarea.value = summaryText;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+
+      // Toast notification
+      const toast = document.getElementById('toast');
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 2500);
+    }
+
+    // ----------------------------------------------------
+    // SYSTEM TOGGLE HANDLERS
+    // ----------------------------------------------------
+    btnTypical.addEventListener('click', () => {
+      currentMode = 'typical';
+      btnTypical.className = "w-full text-left p-4 rounded-lg border-2 border-brand-orange bg-brand-cream/30 text-brand-black dark:text-brand-cream transition-all flex flex-col gap-1";
+      btnShortcut.className = "w-full text-left p-4 rounded-lg border-2 border-transparent bg-brand-cream/10 dark:bg-brand-slate/20 text-brand-slate dark:text-brand-cream/70 hover:bg-brand-cream/30 dark:hover:bg-brand-slate/30 transition-all flex flex-col gap-1";
+      toggleQualifyContainer.classList.remove('opacity-40', 'pointer-events-none');
+      toggleOwnerContainer.classList.remove('opacity-40', 'pointer-events-none');
+      resetSim();
+    });
+
+    btnShortcut.addEventListener('click', () => {
+      currentMode = 'shortcut';
+      btnShortcut.className = "w-full text-left p-4 rounded-lg border-2 border-brand-orange bg-brand-cream/30 text-brand-black dark:text-brand-cream transition-all flex flex-col gap-1";
+      btnTypical.className = "w-full text-left p-4 rounded-lg border-2 border-transparent bg-brand-cream/10 dark:bg-brand-slate/20 text-brand-slate dark:text-brand-cream/70 hover:bg-brand-cream/30 dark:hover:bg-brand-slate/30 transition-all flex flex-col gap-1";
+      toggleQualifyContainer.classList.add('opacity-40', 'pointer-events-none');
+      toggleOwnerContainer.classList.add('opacity-40', 'pointer-events-none');
+      resetSim();
+    });
+
+    chkReal.addEventListener('change', (e) => {
+      txtReal.textContent = e.target.checked ? "Yes" : "No";
+      resetSim();
+    });
+
+    chkDGSeller.addEventListener('change', (e) => {
+      txtDGSeller.textContent = e.target.checked ? "Yes" : "No";
+      resetSim();
+    });
+
+    chkGustavInvolved.addEventListener('change', (e) => {
+      txtGustavInvolved.textContent = e.target.checked ? "Yes" : "No";
+      updateFlow();
+    });
+
+    // Setup simulation triggers
+    btnNext.addEventListener('click', nextStep);
+    btnPrev.addEventListener('click', prevStep);
+    btnReset.addEventListener('click', resetSim);
+    btnAutoplay.addEventListener('click', startAutoplay);
+
+    // ----------------------------------------------------
+    // THEME HANDLING
+    // ----------------------------------------------------
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+
+    // Check system preference on load
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark');
+    }
+
+    // Boot system
+    updateFlow();
+
+  </script>
 </body>
 </html>
